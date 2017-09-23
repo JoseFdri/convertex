@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title text-center>
+      Convertex 1.0
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+          <ion-col text-center>
+              <button ion-button (click)="mostrar_modal()" >Configurar</button>
+          </ion-col>
+        </ion-row>
+        <br>
+        <ion-row>
+          <ion-col text-center>
+              <ion-item text-center>
+                <ion-select [(ngModel)]="banco_selected" multiple="false" placeholder="Bancos" (ionChange)="operar()">
+                  <ion-option *ngFor="let banco of list_bancos; let i = index;"  value="{{i}}" >{{banco.nombre}}</ion-option>
+                </ion-select>
+              </ion-item>
+          </ion-col>
+        </ion-row>
+        <br>
+        <ion-row>
+            <ion-col text-center>
+                <ion-item>
+                  <ion-label color="primary" floating >Ingresar puntos</ion-label>
+                  <ion-input [(ngModel)]="numero_user" type="number" (ionChange)="operar()" clearInput="true"></ion-input>
+                </ion-item>
+            </ion-col>
+          </ion-row>
+          <br>
+        <ion-row>
+          <ion-col text-center>
+              <ion-list radio-group [(ngModel)]="tipo_operacion" (ionChange)="operar()" >
+                <ion-list-header no-lines >
+                  <h1>Tipo de operacion</h1>
+                </ion-list-header>
+                <ion-item>
+                  <ion-label>Puntos a soles</ion-label>
+                  <ion-radio value="puntos_soles"></ion-radio>
+                </ion-item>
+              
+                <ion-item>
+                  <ion-label>Soles a puntos</ion-label>
+                  <ion-radio value="soles_puntos"></ion-radio>
+                </ion-item>
+              </ion-list>
+          </ion-col>
+        </ion-row>
+       
+        <ion-row>
+            <ion-col text-center>
+                <h2> {{prefijo}} {{resultado.toFixed(2)}}</h2>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+</ion-content>
